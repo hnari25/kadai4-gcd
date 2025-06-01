@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest # ジョブを実行するランナー (仮想環境) を指定。ubuntu-latest は最新のUbuntu環境
 
     # ジョブ内で実行するステップ (処理の単位) を順に記述
-    steps
+    steps:
       # ステップ1: リポジトリのコードをチェックアウト
       - name: Checkout repository # ステップの名前
         uses: actions/checkout@v4 # 事前に定義されたアクション (actions/checkout) のバージョン4を使用 [cite: 227]
