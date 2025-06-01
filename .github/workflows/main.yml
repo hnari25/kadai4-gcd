@@ -1,0 +1,25 @@
+# ワークフローの名前 (GitHubのActionsタブで表示される)
+name: CI Test for GCD Script
+
+# ワークフローがトリガーされるイベントを指定
+on: [push] # 'push' イベントが発生した時に実行 (他のイベントも指定可能: pull_request など)
+
+# 実行するジョブを定義 (1つ以上のジョブを定義可能)
+jobs:
+  test: # ジョブのID (任意の名前)
+    name: Run GCD Tests # ジョブの名前 (GitHubのActionsタブで表示される)
+    runs-on: ubuntu-latest # ジョブを実行するランナー (仮想環境) を指定。ubuntu-latest は最新のUbuntu環境
+
+    # ジョブ内で実行するステップ (処理の単位) を順に記述
+    steps
+      # ステップ1: リポジトリのコードをチェックアウト
+      - name: Checkout repository # ステップの名前
+        uses: actions/checkout@v4 # 事前に定義されたアクション (actions/checkout) のバージョン4を使用 [cite: 227]
+
+      # ステップ2: テストスクリプトに実行権限を付与
+      - name: Set execute permission for test script # ステップの名前
+        run: chmod +x test_gcd.sh # 実行するコマンド
+
+      # ステップ3: テストスクリプトを実行
+      - name: Run test script # ステップの名前
+        run: ./test_gcd.sh # 実行するコマンド
