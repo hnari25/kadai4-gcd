@@ -1,1 +1,0 @@
-# kadai4-gcd
